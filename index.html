@@ -1,1 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Atacadão JP | Utilidades e Armarinho com inovação</title>
+  <!-- Bootstrap 5 + Icons + Google Fonts + Animate.css para toques suaves -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fefaf5;
+      scroll-behavior: smooth;
+    }
+
+    /* paleta inovadora: laranja queimado, terracota + tons neutros + toques verdes */
+    :root {
+      --primary: #D45A2B;
+      --primary-dark: #B1421A;
+      --secondary: #2C3E2F;
+      --accent: #F3B33D;
+      --light-bg: #FFF7F0;
+      --card-bg: #ffffff;
+      --text-dark: #2E241F;
+      --text-muted: #6C5A4F;
+    }
+
+    .btn-primary-custom {
+      background-color: var(--primary);
+      border: none;
+      color: white;
+      padding: 12px 28px;
+      font-weight: 600;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 14px rgba(210, 90, 43, 0.25);
+    }
+
+    .btn-primary-custom:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 22px rgba(210, 90, 43, 0.35);
+    }
+
+    .btn-outline-custom {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+      border-radius: 40px;
+      padding: 10px 24px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .btn-outline-custom:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, #FFF3E8 0%, #FFE6D9 100%);
+      padding: 5rem 0 4rem 0;
+      border-bottom-left-radius: 48px;
+      border-bottom-right-radius: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: "✦";
+      font-size: 280px;
+      opacity: 0.08;
+      position: absolute;
+      bottom: -50px;
+      right: -40px;
+      font-family: monospace;
+      pointer-events: none;
+      transform: rotate(10deg);
+    }
+
+    .section-title {
+      font-weight: 800;
+      font-size: 2.2rem;
+      color: var(--primary-dark);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 65%;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 4px;
+      margin-top: 8px;
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      border: none;
+      border-radius: 32px;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.07);
+      transition: transform 0.25s ease, box-shadow 0.3s;
+      height: 100%;
+      padding: 1rem 0.5rem;
+    }
+
+    .info-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 40px -15px rgba(0, 0, 0, 0.12);
+    }
+
+    .icon-circle {
+      width: 70px;
+      height: 70px;
+      background: rgba(211, 90, 43, 0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem auto;
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    .stats-badge {
+      background: #ffffffdd;
+      backdrop-filter: blur(4px);
+      border-radius: 60px;
+      padding: 5px 16px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .map-placeholder {
+      background: #EADBCF;
+      border-radius: 28px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 3rem 0;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR moderna e clean -->
+  <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-3" href="#" style="color: var(--primary);">
+        <i class="fas fa-store me-2"></i> Atacadão JP
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+          <li class="nav-item"><a class="nav-link fw-semibold" href="#home">Início</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="#sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="#detalhes">Detalhes</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="#contato">Contato</a></li>
+          <li class="nav-item"><a class="btn btn-outline-custom ms-lg-2" href="#localizacao"><i class="fas fa-map-marker-alt me-1"></i>Localização</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO - com frases inovadoras e imagens conceituais -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 animate__animated animate__fadeInUp">
+          <span class="badge bg-warning text-dark mb-3 py-2 px-3 rounded-pill"><i class="fas fa-tag me-1"></i> +14 anos de tradição</span>
+          <h1 class="display-4 fw-bold" style="color: #2E241F;">O futuro do <span style="color: var(--primary);">armarinho</span> e utilidades <br> com alma criativa.</h1>
+          <p class="lead my-4 text-muted">Inovação em cada detalhe, variedade que transforma o seu dia a dia. Aqui você encontra produtos exclusivos, preços competitivos e um atendimento feito para inspirar.</p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#contato" class="btn btn-primary-custom"><i class="fas fa-paper-plane me-2"></i>Fale conosco</a>
+            <a href="#detalhes" class="btn btn-outline-custom"><i class="fas fa-chevron-circle-right me-1"></i>Conheça a JP</a>
+          </div>
+          <div class="row mt-5">
+            <div class="col-6">
+              <div class="d-flex align-items-center gap-2">
+                <i class="fas fa-check-circle fs-3" style="color: var(--primary);"></i>
+                <span class="fw-semibold">Ativa na Receita Federal</span>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="d-flex align-items-center gap-2">
+                <i class="fas fa-box-open fs-3" style="color: var(--primary);"></i>
+                <span class="fw-semibold">Milhares de produtos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center animate__animated animate__fadeInRight">
+          <div class="position-relative">
+            <div class="bg-white p-3 rounded-4 shadow-lg d-inline-block">
+              <img src="https://placehold.co/600x450/F3E9E2/5C3E2E?text=Atacadão+JP+✨" alt="Imagem conceitual Atacadão JP" class="img-fluid rounded-4" style="max-width: 100%;">
+            </div>
+            <div class="stats-badge position-absolute top-0 start-0 translate-middle-y ms-3 shadow-sm">
+              <i class="fas fa-star text-warning"></i> Confiança e Inovação
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLOGAN / frase de impacto -->
+  <div class="container py-4 text-center">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="p-4 rounded-4" style="background: #F9F0E8;">
+          <i class="fas fa-quote-left fs-1 me-2" style="color: var(--accent);"></i>
+          <span class="fs-4 fst-italic fw-medium">"Mais que um atacado, um ponto de encontro entre criatividade e utilidade. Cada produto carrega a nossa paixão por servir bem."</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO SOBRE com dados de registro + tempo de mercado -->
+  <section id="sobre" class="container my-5">
+    <div class="text-center mb-4">
+      <h2 class="section-title">Sobre o Atacadão JP</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="info-card p-4">
+          <div class="icon-circle"><i class="fas fa-chart-line"></i></div>
+          <h4 class="fw-bold text-center">História e solidez</h4>
+          <p class="text-center text-muted">Fundada em <strong>06 de fevereiro de 2012</strong>, a J P Utilidades LTDA completou recentemente <strong class="text-primary">14 anos, 2 meses e 3 dias</strong> de atuação no mercado de Imperatriz/MA. Uma trajetória de crescimento contínuo e adaptação às necessidades regionais.</p>
+          <hr>
+          <div class="d-flex justify-content-between flex-wrap">
+            <span><i class="fas fa-building"></i> <strong>CNPJ:</strong> 15.000.533/0001-40</span>
+            <span><i class="fas fa-id-card"></i> <strong>Razão Social:</strong> J P Utilidades LTDA</span>
+          </div>
+          <div class="mt-2"><i class="fas fa-briefcase"></i> <strong>Atividade principal (CNAE):</strong> 47.55-5-02 - Comércio varejista de artigos de armarinho</div>
+          <div class="mt-3"><span class="badge bg-success bg-opacity-25 text-success p-2"><i class="fas fa-check-circle"></i> Situação cadastral: ATIVA</span></div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="info-card p-4">
+          <div class="icon-circle"><i class="fas fa-store-alt"></i></div>
+          <h4 class="fw-bold text-center">Diferenciais inovadores</h4>
+          <ul class="list-unstyled mt-3">
+            <li class="mb-2"><i class="fas fa-palette text-primary me-2"></i> Mix criativo: armarinho moderno + utilidades domésticas + festas</li>
+            <li class="mb-2"><i class="fas fa-hand-sparkles text-primary me-2"></i> Ambiente planejado com cores e iluminação acolhedora</li>
+            <li class="mb-2"><i class="fas fa-truck-fast text-primary me-2"></i> Atendimento a revendedores e pessoas físicas com entrega ágil</li>
+            <li class="mb-2"><i class="fas fa-credit-card text-primary me-2"></i> Aceitamos PIX, cartões e condições especiais para atacado</li>
+          </ul>
+          <div class="bg-light rounded-3 p-3 mt-2">
+            <i class="fas fa-map-pin me-1"></i> <strong>Polo comercial:</strong> Rua Ceará, 585 - Nova Imperatriz. Referência em utilidades na região tocantina.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETALHES / INFORMAÇÕES COMPLETAS (cards com ícones) -->
+  <section id="detalhes" class="bg-white py-5" style="background: #FEFAF5;">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title">Informações institucionais</h2>
+        <p class="text-muted">Dados oficiais, estrutura e correspondência completa</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="info-card text-center p-4">
+            <div class="icon-circle mx-auto"><i class="fas fa-envelope-open-text"></i></div>
+            <h5 class="fw-bold">Contato direto</h5>
+            <p class="mb-1"><i class="fas fa-envelope"></i> <strong>E-mail:</strong> pmamelocomercio@hotmail.com</p>
+            <p><i class="fas fa-phone-alt"></i> <strong>Telefone:</strong> (99) 3524-6451</p>
+            <div class="mt-2">
+              <a href="mailto:pmamelocomercio@hotmail.com" class="btn btn-sm btn-primary-custom px-3 py-1"><i class="fas fa-paper-plane"></i> Enviar e-mail</a>
+              <a href="tel:+559935246451" class="btn btn-sm btn-outline-custom ms-2"><i class="fas fa-phone"></i> Ligar agora</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="info-card text-center p-4">
+            <div class="icon-circle mx-auto"><i class="fas fa-location-dot"></i></div>
+            <h5 class="fw-bold">Localização principal</h5>
+            <p><strong>Logradouro:</strong> Rua Ceara, 585, Nova Imperatriz<br>
+            <strong>CEP:</strong> 65907-090<br>
+            <strong>Imperatriz - Maranhão</strong></p>
+            <p><i class="fas fa-globe"></i> Referência próxima ao centro comercial.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="info-card text-center p-4">
+            <div class="icon-circle mx-auto"><i class="fas fa-mail-bulk"></i></div>
+            <h5 class="fw-bold">Correspondência</h5>
+            <address class="mb-0">
+              <strong>Atacadao Jp / J P Utilidades LTDA</strong><br>
+              Rua Ceara 585, Nova Imperatriz<br>
+              Imperatriz - MA, CEP: 65907-090<br>
+              Brasil
+            </address>
+            <div class="mt-3 small text-muted">Documentos e encomendas com segurança.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bloco extra: estatística + frase motivacional + imagem ilustrativa -->
+      <div class="row mt-5 align-items-center g-4">
+        <div class="col-md-6">
+          <div class="bg-white rounded-4 p-4 shadow-sm">
+            <i class="fas fa-chart-simple fs-1" style="color: var(--primary);"></i>
+            <h3 class="fw-bold mt-2">+14 anos gerando valor</h3>
+            <p>Desde 2012 atuando no varejo de armarinho e utilidades, somos referência em qualidade e inovação. Nossa equipe está preparada para atender desde o pequeno empreendedor até grandes compradores da região.</p>
+            <div class="progress mb-3" style="height: 10px;">
+              <div class="progress-bar" style="width: 100%; background-color: var(--primary);" role="progressbar"></div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span><i class="fas fa-calendar-check"></i> Aberta em 06/02/2012</span>
+              <span><i class="fas fa-city"></i> Imperatriz (MA)</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="position-relative">
+            <img src="https://placehold.co/600x400/EAD1C0/5C3A28?text=Ambiente+inovador+✨" alt="Imagem inovadora da loja" class="img-fluid rounded-4 shadow">
+            <div class="mt-2 text-center"><span class="badge bg-light text-dark px-3 py-2"><i class="fas fa-camera"></i> Espaço planejado | Cores e funcionalidade</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCALIZAÇÃO com mapa interativo (placeholder) e dados completos -->
+  <section id="localizacao" class="container my-5">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <h2 class="section-title">Onde estamos</h2>
+        <p class="lead">Venha nos visitar ou entre em contato para compras no atacado. Estamos estrategicamente localizados na Rua Ceará, 585 – bairro Nova Imperatriz, próximo a importantes vias de Imperatriz.</p>
+        <ul class="list-unstyled">
+          <li class="mb-2"><i class="fas fa-road text-primary me-2"></i> <strong>Acesso fácil:</strong> a poucos minutos do centro e da BR-010</li>
+          <li class="mb-2"><i class="fas fa-clock text-primary me-2"></i> <strong>Horário de funcionamento:</strong> Segunda a Sexta: 8h às 18h | Sábado: 8h às 14h</li>
+          <li class="mb-2"><i class="fas fa-hand-holding-heart text-primary me-2"></i> <strong>Compromisso:</strong> Atendimento humanizado e soluções para seu negócio</li>
+        </ul>
+        <div class="mt-4">
+          <a href="https://maps.google.com/?q=Rua+Ceara+585+Nova+Imperatriz+Imperatriz+MA" target="_blank" class="btn btn-primary-custom"><i class="fab fa-google-maps me-1"></i> Abrir no Google Maps</a>
+        </div>
+        <!-- Correspondência repetida para clareza -->
+        <div class="alert alert-light mt-4 border-start border-4 border-primary" role="alert">
+          <i class="fas fa-envelope"></i> <strong>Para correspondência:</strong> Atacadao Jp J P Utilidades LTDA, Rua Ceara 585, Nova Imperatriz, Imperatriz MA, 65907-090.
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="map-placeholder p-4 text-center shadow">
+          <i class="fas fa-map-marked-alt fa-3x mb-3" style="color: var(--primary);"></i>
+          <h5>📍 Rua Ceara, 585 - Nova Imperatriz</h5>
+          <p class="mb-1">Imperatriz - Maranhão | CEP 65907-090</p>
+          <div class="bg-white p-2 rounded-3 w-100 mt-3" style="height: 100px; background: #EEDBCE;">
+            <i class="fas fa-store"></i> Atacadão JP — referência em armarinho e utilidades
+          </div>
+          <small class="text-muted mt-2 d-block">* Utilize o mapa interativo ou nosso contato para mais informações</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO + Formulário de mensagem (simplificado e visual) -->
+  <section id="contato" class="py-5" style="background: #F5EDE4;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="bg-white p-4 p-md-5 rounded-5 shadow-lg">
+            <div class="text-center mb-4">
+              <i class="fas fa-comment-dots fs-1" style="color: var(--primary);"></i>
+              <h2 class="fw-bold mt-2">Fale com a equipe Atacadão JP</h2>
+              <p>Estamos prontos para tirar dúvidas, receber sugestões ou fornecer orçamentos para atacado.</p>
+            </div>
+            <div class="row g-4">
+              <div class="col-md-5">
+                <div class="d-flex mb-3">
+                  <i class="fas fa-phone-alt fs-4 me-3" style="color: var(--primary);"></i>
+                  <div><strong>Telefone / WhatsApp:</strong><br>(99) 3524-6451</div>
+                </div>
+                <div class="d-flex mb-3">
+                  <i class="fas fa-envelope fs-4 me-3" style="color: var(--primary);"></i>
+                  <div><strong>E-mail direto:</strong><br>pmamelocomercio@hotmail.com</div>
+                </div>
+                <div class="d-flex">
+                  <i class="fas fa-clock fs-4 me-3" style="color: var(--primary);"></i>
+                  <div><strong>Atendimento presencial:</strong><br>Seg-Sex 8h-18h, Sáb 8h-14h</div>
+                </div>
+                <hr class="my-3">
+                <div class="small text-muted">
+                  <i class="fab fa-instagram"></i> <strong>Siga-nos:</strong> @atacadaojp (em breve redes sociais atualizadas)
+                </div>
+              </div>
+              <div class="col-md-7">
+                <form action="#" method="post">
+                  <div class="mb-3">
+                    <label class="form-label fw-semibold">Seu nome</label>
+                    <input type="text" class="form-control rounded-4" placeholder="Nome completo">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label fw-semibold">E-mail ou telefone</label>
+                    <input type="text" class="form-control rounded-4" placeholder="Contato para retorno">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label fw-semibold">Mensagem</label>
+                    <textarea rows="3" class="form-control rounded-4" placeholder="Gostaria de saber sobre os produtos, encomendas ou parcerias..."></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary-custom w-100"><i class="fas fa-paper-plane"></i> Enviar mensagem</button>
+                  <p class="small text-muted mt-2">*Responderemos em até 24h úteis.</p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER completo com todos os dados legais e ícones -->
+  <footer class="bg-dark text-white pt-5 pb-4 mt-5" style="background: #1F2A1E !important;">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-md-5">
+          <h4 class="fw-bold"><i class="fas fa-store"></i> Atacadão JP</h4>
+          <p>J P Utilidades LTDA | CNPJ: 15.000.533/0001-40<br>
+          Situação cadastral: ATIVA | CNAE: 47.55-5-02</p>
+          <p><i class="fas fa-map-marker-alt"></i> Rua Ceara, 585 - Nova Imperatriz, Imperatriz/MA - 65907-090</p>
+          <p><i class="fas fa-envelope"></i> pmamelocomercio@hotmail.com | <i class="fas fa-phone"></i> (99) 3524-6451</p>
+        </div>
+        <div class="col-md-3">
+          <h5>Links rápidos</h5>
+          <ul class="list-unstyled">
+            <li><a href="#home" class="text-white-50 text-decoration-none">Início</a></li>
+            <li><a href="#sobre" class="text-white-50 text-decoration-none">Sobre a empresa</a></li>
+            <li><a href="#detalhes" class="text-white-50 text-decoration-none">Dados e registros</a></li>
+            <li><a href="#contato" class="text-white-50 text-decoration-none">Contato comercial</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Inovação & confiança</h5>
+          <p>Há mais de 14 anos transformando o varejo de armarinho em Imperatriz. Venha conhecer nosso espaço inovador e colorido, ideal para suas compras criativas.</p>
+          <div class="d-flex gap-3 fs-4">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <small class="text-white-50">© 2026 Atacadão JP - Todos os direitos reservados.</small>
+        </div>
+      </div>
+      <div class="border-top border-secondary mt-4 pt-3 text-center small">
+        Fundada em 06/02/2012 — 14 anos, 2 meses e 3 dias de compromisso com o Maranhão.
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- pequeno scroll suave adicional (já funciona com href) -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
